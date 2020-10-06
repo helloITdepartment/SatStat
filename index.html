@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SatStat</title>
+<link rel="stylesheet" href="build.css">
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<!-- script src="http://d3js.org/d3.v2.min.js?2.9.1"></script  -->
+<script src="d3.v2.js"></script>
+<script src="sankey.js"></script>
+<script src="canvg.js"></script>
+<script src="rgbcolor.js"></script>
+<script src="sankeymatic.js"></script>
+<script src="servertest.js"></script>
+
+<body>
+I would like to know how many of each
+<select name="singular" id="singular">
+<option value="usecase">use case's</option>
+<option value="country">country's</option>
+<option value="company">company's</option>
+</select>
+<select name="plural" id="plural">
+<option value="launches">launches</option>
+<option value="satellites">satellites</option>
+<option value="spaceships">spaceships</option>
+</select>
+<select name="q" id="q">
+<option value="year">were launched in which decade</option>
+<option value="orbitclass">are in which orbital class</option>
+<option value="usecase">belong to which use case</option>
+<option value="company">were launched by which company</option>
+<option value="ship">were launched on which ship</option>
+<option value="weightclass">were in which weight class</option>
+<option value="numlaunches">were launched how many times</option>
+<option value="whichSite">were launched from which site</option>
+</select>
+please.
+<br>
+<!--- <button id="goButton" type="submit" onclick="process_sankey(); return false;">Go!</button> -->
+<button id="goButton" type="submit" onclick="testServer(); return false;">Go!</button>
+</body>
+
+<div class="center_basic">
+
+<p id="chart">
+<svg id="sankey_svg" height="600" width="600" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+</p>
+<canvas id="png_preview" height="600" width="600" style="background-color: transparent; display:none;"></canvas>
+<div id="chartfooter">
+</div>
+</td></tr></table>
+
+</div>
+<hr>
+<script>
+process_sankey(); // render on page load
+</script>
+
+</body></html>
