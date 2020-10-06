@@ -1,4 +1,4 @@
-﻿/*function testServer() {
+/*function testServer() {
 	console.log('1');
 }*/
 
@@ -74,4 +74,4 @@ function createDB() {
 });
 }
 
-createDB();
+//createDB();
