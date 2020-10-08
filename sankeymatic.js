@@ -447,7 +447,7 @@ function render_sankey(nodes_in, flows_in, config_in) {
 
 // MAIN FUNCTION:
 // Gather inputs from user; validate them; render updated diagram
-glob.process_sankey = function () {
+glob.process_sankey = function (info) {
     var source_lines = [], good_flows = [], good_node_lines = [],
         bad_lines = [], node_order = [], line_ix = 0, line_in = '',
         unique_nodes = {}, matches = [], amount_in = 0,
@@ -461,7 +461,7 @@ glob.process_sankey = function () {
         chart_el    = document.getElementById("chart"),
         messages_el = document.getElementById("messages_area"),
         bgcolor_el  = document.getElementById("background_color"),
-        raw_source  = "Civil [1] 1970-1979\nGovernment [1] 1980-1989\nMilitary [1] 1980-1989\nCivil [1] 1990-1999\nCommercial [37] 1990-1999\nGovernment [17] 1990-1999\nMilitary [19] 1990-1999\nCivil [15] 2000-2009\nCommercial [156] 2000-2009\nGovernment [65] 2000-2009\nMilitary [86] 2000-2009\nCivil [30] 2010-2019\nCommercial [249] 2010-2019\nGovernment [253] 2010-2019\nMilitary [199] 2010-2019\nCommercial [9] 2020-2029\nGovernment [4] 2020-2029\nCivil [1] 2020-2029\nMilitary [7] 2020-2029";
+            raw_source  = info || "Civil [1] 1970\nGovernment [1] 1980\nMilitary [1] 1980\nGovernment [17] 1990\nMilitary [20] 1990\nCommercial [55] 1990\nCivil [1] 1990\nMilitary [114] 2000\nGovernment [99] 2000\nCommercial [198] 2000\nCivil [30] 2000\nMilitary [338] 2010\nGovernment [530] 2010\nCommercial [1074] 2010\nCivil [156] 2010\nMilitary  [1] 2010\nCommercial  [1] 2010\nCommercial [318] 2020\nGovernment [10] 2020\nMilitary [12] 2020\nCivil [8] 2020\n";
 		//console.log(raw_source);
 
     // Define utility functions:
