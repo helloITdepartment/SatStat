@@ -15,34 +15,41 @@
 <script src="rgbcolor.js"></script>
 <script src="sankeymatic.js"></script>
 <script src="servertest.js"></script>
+<!--<script src="app.js" type="text/javascript"></script>-->
 
 <body>
 I would like to know how many of each
-<select name="singular" id="singular">
-<option value="usecase">use case's</option>
-<option value="country">country's</option>
-<option value="company">company's</option>
+<select name="singular" id="singular" onchange="firstDropdownChanged();">
+    <option value="base">----</option>
+    <option value="type">use case's</option>
+    <option value="country">country's</option>
+    <option value="company">company's</option>
 </select>
-<select name="plural" id="plural">
-<option value="launches">launches</option>
-<option value="satellites">satellites</option>
-<option value="spaceships">spaceships</option>
+<select name="plural" id="plural" disabled="true" onchange="secondDropdownChanged();">
+    <option value="base">----</option>
+    <option value="launches">launches</option>
+    <option value="satellites">satellites</option>
+    <option value="spaceships">spaceships</option>
 </select>
-<select name="q" id="q">
-<option value="year">were launched in which decade</option>
-<option value="orbitclass">are in which orbital class</option>
-<option value="usecase">belong to which use case</option>
-<option value="company">were launched by which company</option>
-<option value="ship">were launched on which ship</option>
-<option value="weightclass">were in which weight class</option>
-<option value="numlaunches">were launched how many times</option>
-<option value="whichSite">were launched from which site</option>
+<select name="q" id="q" disabled="true">
+    <option value="base">----</option>
+    <option value="year">were launched in which decade</option>
+    <option value="orbitclass">are in which orbital class</option>
+    <option value="type">belong to which use case</option>
+    <option value="company">were launched by which company</option>
+    <option value="ship">were launched on which ship</option>
+    <option value="weightclass">were in which weight class</option>
+    <option value="numlaunches">were launched how many times</option>
+    <option value="whichSite">were launched from which site</option>
 </select>
 please.
 <br>
 <!--- <button id="goButton" type="submit" onclick="process_sankey(); return false;">Go!</button> -->
 <button id="goButton" type="submit" onclick="requestData(); return false;">Go!</button>
 </body>
+<table id="messages">
+<tr><td id="messages_area"></td></tr>
+</table>
 
 <div class="center_basic">
 
