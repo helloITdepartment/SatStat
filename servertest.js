@@ -59,12 +59,125 @@ function firstDropdownChanged() {
 }
 
 function secondDropdownChanged() {
+    
+    let singularDropdown = document.getElementById("singular");
+    let singularSelected = singularDropdown.options[singularDropdown.selectedIndex].value;
+
+    
     let pluralDropdown = document.getElementById("plural");
+    let pluralSelected = pluralDropdown.options[pluralDropdown.selectedIndex].value;
+
     let qDropdown = document.getElementById("q");
-    var qSelected = pluralDropdown.options[pluralDropdown.selectedIndex].value;
-//    pluralDropdown.innerHTML = "";
-    qDropdown.disabled = qSelected == "base";
-//    console.log(singularDropdown.options[singularDropdown.selectedIndex].value);
+    
+    var values = ["base"];
+    var texts = ["----"];
+    
+    if(pluralSelected == "base") {
+        qDropdown.disabled = true;
+        
+    } else {
+        
+        //Add pertinent options
+        if(pluralSelected == "satellite"){
+            
+//            values.push("decade");
+//            texts.push("were launched in which decade");
+
+            values.push("orbitClass");
+            texts.push("are in which orbital class");
+            
+            values.push("type");
+            texts.push("belong to which use case");
+            
+            values.push("company");
+            texts.push("were launched by which company");
+            
+//            values.push("ship");
+//            texts.push("were launched on which ship");
+            
+//            values.push("weightClass");
+//            texts.push("were in which weight class");
+            
+//            values.push("numLaunches");
+//            texts.push("were launched how many times");
+            
+//            values.push("whichSite");
+//            texts.push("were launched from which site");
+            
+        }else if(pluralSelected == "launch"){
+            
+            values.push("decade");
+            texts.push("were launched in which decade");
+            
+//            values.push("orbitClass");
+//            texts.push("are in which orbital class");
+            
+            values.push("type");
+            texts.push("belong to which use case");
+            
+            values.push("company");
+            texts.push("were launched by which company");
+            
+            if(singularSelected != "company") {
+                values.push("ship");
+                texts.push("were launched on which ship");
+            }
+            
+            values.push("weightClass");
+            texts.push("were in which weight class");
+            
+//            values.push("numLaunches");
+//            texts.push("were launched how many times");
+            
+            values.push("whichSite");
+            texts.push("were launched from which site");
+            
+        }else if(pluralSelected == "vehicle"){
+            
+            values.push("decade");
+            texts.push("were launched in which decade");
+            
+//            values.push("orbitClass");
+//            texts.push("are in which orbital class");
+            
+//            values.push("type");
+//            texts.push("belong to which use case");
+            
+            if(singularSelected != "type"){
+                values.push("company");
+                texts.push("were launched by which company");
+            
+            
+//            values.push("ship");
+//            texts.push("were launched on which ship");
+            
+                values.push("weightClass");
+                texts.push("were in which weight class");
+            
+                values.push("numLaunches");
+                texts.push("were launched how many times");
+            
+                values.push("whichSite");
+                texts.push("were launched from which site");
+            }
+        
+        }
+        
+        
+        qDropdown.innerHTML = "";
+        
+        var i;
+        for(i = 0; i < values.length; i++) {
+            var opt = document.createElement("option");
+            opt.value = values[i];
+            opt.text = texts[i];
+            qDropdown.options[i] = opt;
+        }
+
+        qDropdown.disabled = false;
+    }
+    
+    
 }
 
 function requestData() {
