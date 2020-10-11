@@ -17,6 +17,14 @@ http.createServer(function(request, response) {
             }
         });
         
+        let fields = u.split("/");
+        let singular = fields[2];
+        let plural = fields[3];
+        let q = fields[4];
+        
+//        let sql = "SELECT (strftime('%Y', launchdate)/10)*10 as TYPE, (strftime('%Y', launchdate)/10)*10 as decade, Count((strftime('%Y', launchdate)/10)*10) as howMany FROM launch GROUP  BY decade ORDER  BY decade;"
+
+        
         let sql = "SELECT type, (strftime('%Y', launchdate)/10)*10 as decade, Count(launchdate) as howMany FROM launch GROUP  BY type, launchdate ORDER  BY launchdate;"
         
         db.all(sql, [], (err, rows) => {
@@ -31,10 +39,11 @@ http.createServer(function(request, response) {
             var dict = {};
 
             rows.forEach((row) => {
-                let type = row["TYPE"];
+                let type = String(row["TYPE"]);
                 let howMany = row["howMany"];
                 let decade = row["decade"];
 
+//                console.log(row);
                 let arr = type.split("/");
                 arr.forEach((t) => {
                     const k = [t, decade];
