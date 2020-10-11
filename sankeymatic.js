@@ -462,12 +462,14 @@ glob.process_sankey = function (info) {
         messages_el = document.getElementById("messages_area"),
         bgcolor_el  = document.getElementById("background_color"),
             raw_source  = info || "Civil [1] 1970\nGovernment [1] 1980\nMilitary [1] 1980\nGovernment [17] 1990\nMilitary [20] 1990\nCommercial [55] 1990\nCivil [1] 1990\nMilitary [114] 2000\nGovernment [99] 2000\nCommercial [198] 2000\nCivil [30] 2000\nMilitary [338] 2010\nGovernment [530] 2010\nCommercial [1074] 2010\nCivil [156] 2010\nMilitary  [1] 2010\nCommercial  [1] 2010\nCommercial [318] 2020\nGovernment [10] 2020\nMilitary [12] 2020\nCivil [8] 2020\n";
-		//console.log(raw_source);
+//            console.log("raw source");
+//		console.log(raw_source);
 
     // Define utility functions:
 
     // add_message: Put a message on the page using the specified class:
-    function add_message( msg_class, msg_html, put_at_beginning ) {
+    glob.add_message = function (msg_class, msg_html, put_at_beginning ) {
+        messages_el.innerHTML = "";
         var new_msg = '<p class="' + msg_class + '">' + msg_html + '</p>';
         messages_el.innerHTML
             = put_at_beginning
@@ -507,7 +509,7 @@ glob.process_sankey = function (info) {
     }
 
     // BEGIN by resetting all messages:
-    //messages_el.innerHTML = '';
+    messages_el.innerHTML = '';
 
     // Go through lots of validation with plenty of bailout points and
     // informative messages for the poor soul trying to do this.
