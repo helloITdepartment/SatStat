@@ -2,6 +2,71 @@ function testServer() {
 	console.log('1');
 }
 
+function firstDropdownChanged() {
+    let singularDropdown = document.getElementById("singular");
+    let pluralDropdown = document.getElementById("plural");
+    let qDropdown = document.getElementById("q");
+    
+    let singularSelected = singularDropdown.options[singularDropdown.selectedIndex].value;
+    var values = ["base"];
+    var texts = ["----"];
+    
+    if(singularSelected == "base") {
+        pluralDropdown.disabled = true;
+        qDropdown.disabled = true;
+    }else{
+        if(singularSelected == "type"){
+            values.push("satellite");
+            texts.push("satellites");
+            
+            values.push("launch");
+            texts.push("launches");
+            
+//            values.push("vehicle");
+//            texts.push("spaceships");
+        }else if(singularSelected == "country"){
+            values.push("satellite");
+            texts.push("satellites");
+            
+            values.push("launch");
+            texts.push("launches");
+            
+            values.push("vehicle");
+            texts.push("spaceships");
+        }else if(singularSelected == "company"){
+            values.push("satellite");
+            texts.push("satellites");
+            
+            values.push("launch");
+            texts.push("launches");
+            
+            values.push("vehicle");
+            texts.push("spaceships");
+        }
+        
+        pluralDropdown.innerHTML = "";
+        var i;
+        for(i = 0; i < values.length; i++) {
+            var opt = document.createElement("option");
+            opt.value = values[i];
+            opt.text = texts[i];
+            pluralDropdown.options[i] = opt;
+        }
+
+        pluralDropdown.disabled = false;
+    }
+//    console.log(pluralDropdown.options);
+}
+
+function secondDropdownChanged() {
+    let pluralDropdown = document.getElementById("plural");
+    let qDropdown = document.getElementById("q");
+    var qSelected = pluralDropdown.options[pluralDropdown.selectedIndex].value;
+//    pluralDropdown.innerHTML = "";
+    qDropdown.disabled = qSelected == "base";
+//    console.log(singularDropdown.options[singularDropdown.selectedIndex].value);
+}
+
 function requestData() {
     let singularDropdown = document.getElementById("singular");
     let singularSelected = singularDropdown.options[singularDropdown.selectedIndex].value;
@@ -18,6 +83,10 @@ function requestData() {
     
     const Http = new XMLHttpRequest();
     const url=`data/${singularSelected}/${pluralSelected}/${qSelected}`;
+    if(singularSelected == qSelected) {
+        add_message(`errormessage`, `Asking how many of which ${singularSelected}'s anything map to which ${qSelected} is a bit redundant no?`, false);
+        return
+    }
     console.log(url);
     Http.open("GET", url);
     Http.send();
