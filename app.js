@@ -24,6 +24,7 @@ http.createServer(function(request, response) {
         let singular = fields[2];
         let plural = fields[3];
         let q = fields[4];
+        let minim = fields[5] || 0;
         
         let table = plural;
         
@@ -67,7 +68,7 @@ http.createServer(function(request, response) {
                 let howMany = row["howMany"];
                 let second = row["second"];
 
-                if(howMany > 1) {
+                if(howMany > minim) {
                     let arr = first.split("/");
                     arr.forEach((f) => {
                         let sArr = second.split("/");

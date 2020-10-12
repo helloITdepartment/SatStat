@@ -93,9 +93,8 @@ function secondDropdownChanged() {
             values.push("type");
             texts.push("belong to which use case");
             
-            //WAY too many companies
-//            values.push("companyname");
-//            texts.push("were launched by which company");
+            values.push("companyname");
+            texts.push("were launched by which company");
             
 //            values.push("ship");
 //            texts.push("were launched on which ship");
@@ -120,9 +119,8 @@ function secondDropdownChanged() {
             values.push("type");
             texts.push("belong to which use case");
             
-            //WAY too many companies
-//            values.push("companyname");
-//            texts.push("were launched by which company");
+            values.push("companyname");
+            texts.push("were launched by which company");
             
             if(singularSelected != "companyname") {
                 values.push("ship");
@@ -151,9 +149,8 @@ function secondDropdownChanged() {
             
             if(singularSelected != "type"){
                 
-                //WAY too many companies
-//                values.push("companyname");
-//                texts.push("were launched by which company");
+                values.push("companyname");
+                texts.push("were launched by which company");
             
             
 //            values.push("ship");
@@ -213,12 +210,15 @@ function requestData() {
     let qDropdown = document.getElementById("q");
     let qSelected = qDropdown.options[qDropdown.selectedIndex].value;
     
+    let slider = document.getElementById("minSlider");
+    let minim = slider.value;
+    
     console.log(singularSelected);
     console.log(pluralSelected);
     console.log(qSelected);
     
     const Http = new XMLHttpRequest();
-    const url=`data/${singularSelected}/${pluralSelected}/${qSelected}`;
+    const url=`data/${singularSelected}/${pluralSelected}/${qSelected}/${minim}`;
     if(singularSelected == qSelected) {
         add_message(`errormessage`, `Asking how many of which ${singularSelected}'s anything map to which ${qSelected} is a bit redundant no?`, false);
         return
