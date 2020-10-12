@@ -22,7 +22,7 @@ I would like to know how many of each
 <select name="singular" id="singular" onchange="firstDropdownChanged();">
     <option value="base">----</option>
     <option value="type">use case's</option>
-    <option value="country">country's</option>
+    <option value="ownercountry">country's</option>
     <option value="company">company's</option>
 </select>
 <select name="plural" id="plural" disabled="true" onchange="secondDropdownChanged();">
@@ -31,10 +31,10 @@ I would like to know how many of each
     <option value="satellites">satellites</option>
     <option value="spaceships">spaceships</option>
 </select>
-<select name="q" id="q" disabled="true">
+<select name="q" id="q" disabled="true" onchange="thirdDropdownChanged();">
     <option value="base">----</option>
     <option value="decade">were launched in which decade</option>
-    <option value="orbitclass">are in which orbital class</option>
+    <option value="class">are in which orbital class</option>
     <option value="type">belong to which use case</option>
     <option value="company">were launched by which company</option>
     <option value="ship">were launched on which ship</option>
@@ -45,7 +45,7 @@ I would like to know how many of each
 please.
 <br>
 <!--- <button id="goButton" type="submit" onclick="process_sankey(); return false;">Go!</button> -->
-<button id="goButton" type="submit" onclick="requestData(); return false;">Go!</button>
+<button id="goButton" type="submit" disabled="true" onclick="requestData(); return false;">Go!</button>
 </body>
 <table id="messages">
 <tr><td id="messages_area"></td></tr>
@@ -54,15 +54,14 @@ please.
 <div class="center_basic">
 
 <p id="chart">
-<svg id="sankey_svg" height="600" width="600" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+<svg id="sankey_svg" height="1000" width="1000" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
 </p>
-<canvas id="png_preview" height="600" width="600" style="background-color: transparent; display:none;"></canvas>
+<canvas id="png_preview" height="1000" width="1000" style="background-color: transparent; display:none;"></canvas>
 <div id="chartfooter">
 </div>
 </td></tr></table>
 
 </div>
-<hr>
 <script>
 process_sankey(); // render on page load
 </script>
