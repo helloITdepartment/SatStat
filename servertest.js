@@ -6,6 +6,7 @@ function firstDropdownChanged() {
     let singularDropdown = document.getElementById("singular");
     let pluralDropdown = document.getElementById("plural");
     let qDropdown = document.getElementById("q");
+    let goButton = document.getElementById("goButton");
     
     let singularSelected = singularDropdown.options[singularDropdown.selectedIndex].value;
     var values = ["base"];
@@ -13,7 +14,7 @@ function firstDropdownChanged() {
     
     if(singularSelected == "base") {
         pluralDropdown.disabled = true;
-        qDropdown.disabled = true;
+        
     }else{
         if(singularSelected == "type"){
             values.push("satellite");
@@ -24,7 +25,7 @@ function firstDropdownChanged() {
             
 //            values.push("vehicle");
 //            texts.push("spaceships");
-        }else if(singularSelected == "country"){
+        }else if(singularSelected == "ownercountry"){
             values.push("satellite");
             texts.push("satellites");
             
@@ -33,7 +34,7 @@ function firstDropdownChanged() {
             
             values.push("vehicle");
             texts.push("spaceships");
-        }else if(singularSelected == "company"){
+        }else if(singularSelected == "companyname"){
             values.push("satellite");
             texts.push("satellites");
             
@@ -55,6 +56,8 @@ function firstDropdownChanged() {
 
         pluralDropdown.disabled = false;
     }
+    qDropdown.disabled = true;
+    goButton.disabled = true;
 //    console.log(pluralDropdown.options);
 }
 
@@ -69,12 +72,13 @@ function secondDropdownChanged() {
 
     let qDropdown = document.getElementById("q");
     
+    let goButton = document.getElementById("goButton");
+
     var values = ["base"];
     var texts = ["----"];
     
     if(pluralSelected == "base") {
         qDropdown.disabled = true;
-        
     } else {
         
         //Add pertinent options
@@ -83,14 +87,15 @@ function secondDropdownChanged() {
 //            values.push("decade");
 //            texts.push("were launched in which decade");
 
-            values.push("orbitClass");
+            values.push("class");
             texts.push("are in which orbital class");
             
             values.push("type");
             texts.push("belong to which use case");
             
-            values.push("company");
-            texts.push("were launched by which company");
+            //WAY too many companies
+//            values.push("companyname");
+//            texts.push("were launched by which company");
             
 //            values.push("ship");
 //            texts.push("were launched on which ship");
@@ -109,16 +114,17 @@ function secondDropdownChanged() {
             values.push("decade");
             texts.push("were launched in which decade");
             
-//            values.push("orbitClass");
+//            values.push("class");
 //            texts.push("are in which orbital class");
             
             values.push("type");
             texts.push("belong to which use case");
             
-            values.push("company");
-            texts.push("were launched by which company");
+            //WAY too many companies
+//            values.push("companyname");
+//            texts.push("were launched by which company");
             
-            if(singularSelected != "company") {
+            if(singularSelected != "companyname") {
                 values.push("ship");
                 texts.push("were launched on which ship");
             }
@@ -137,15 +143,17 @@ function secondDropdownChanged() {
             values.push("decade");
             texts.push("were launched in which decade");
             
-//            values.push("orbitClass");
+//            values.push("class");
 //            texts.push("are in which orbital class");
             
 //            values.push("type");
 //            texts.push("belong to which use case");
             
             if(singularSelected != "type"){
-                values.push("company");
-                texts.push("were launched by which company");
+                
+                //WAY too many companies
+//                values.push("companyname");
+//                texts.push("were launched by which company");
             
             
 //            values.push("ship");
@@ -163,7 +171,6 @@ function secondDropdownChanged() {
         
         }
         
-        
         qDropdown.innerHTML = "";
         
         var i;
@@ -175,6 +182,23 @@ function secondDropdownChanged() {
         }
 
         qDropdown.disabled = false;
+        
+        goButton.disabled = true;
+    }
+    
+}
+
+function thirdDropdownChanged() {
+
+    let qDropdown = document.getElementById("q");
+    let qSelected = qDropdown.options[qDropdown.selectedIndex].value;
+
+    let goButton = document.getElementById("goButton");
+    
+    if(qSelected == "base") {
+        goButton.disabled = true;
+    } else {
+        goButton.disabled = false;
     }
     
 }
