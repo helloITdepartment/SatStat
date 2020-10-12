@@ -66,7 +66,7 @@ http.createServer(function(request, response) {
             rows.forEach((row) => {
                 let first = String(row["first"]);
                 let howMany = row["howMany"];
-                let second = row["second"];
+                let second = String(row["second"]);
 
                 if(howMany > minim) {
                     let arr = first.split("/");

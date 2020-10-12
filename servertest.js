@@ -210,8 +210,8 @@ function requestData() {
     let qDropdown = document.getElementById("q");
     let qSelected = qDropdown.options[qDropdown.selectedIndex].value;
     
-    let slider = document.getElementById("minSlider");
-    let minim = slider.value;
+    let numberBox = document.getElementById("minNumberBox");
+    let minim = numberBox.value || 1;
     
     console.log(singularSelected);
     console.log(pluralSelected);

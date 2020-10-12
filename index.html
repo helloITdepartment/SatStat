@@ -42,17 +42,8 @@ I would like to know how many of each
     <option value="numlaunches">were launched how many times</option>
     <option value="whichSite">were launched from which site</option>
 </select>
-please, with a minimum of: <span id="sliderValueBox">0</span>
-<input type="range" min="0" max="100" value="0" id="minSlider">
-<script>
-var slider = document.getElementById("minSlider");
-var output = document.getElementById("sliderValueBox");
-output.innerHTML = slider.value;
+please, with a minimum of: <input type="number" id="minNumberBox" name="minNumberBox" min="1" max="100" value="1">
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-</script>
 <br>
 <!--- <button id="goButton" type="submit" onclick="process_sankey(); return false;">Go!</button> -->
 <button id="goButton" type="submit" disabled="true" onclick="requestData(); return false;">Go!</button>
