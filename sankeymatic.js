@@ -461,7 +461,8 @@ glob.process_sankey = function (info) {
         chart_el    = document.getElementById("chart"),
         messages_el = document.getElementById("messages_area"),
         bgcolor_el  = document.getElementById("background_color"),
-            raw_source  = info || "Civil [1] 1970\nGovernment [1] 1980\nMilitary [1] 1980\nGovernment [17] 1990\nMilitary [20] 1990\nCommercial [55] 1990\nCivil [1] 1990\nMilitary [114] 2000\nGovernment [99] 2000\nCommercial [198] 2000\nCivil [30] 2000\nMilitary [338] 2010\nGovernment [530] 2010\nCommercial [1074] 2010\nCivil [156] 2010\nMilitary  [1] 2010\nCommercial  [1] 2010\nCommercial [318] 2020\nGovernment [10] 2020\nMilitary [12] 2020\nCivil [8] 2020\n";
+        raw_source  = info || "";
+            //Civil [1] 1970\nGovernment [1] 1980\nMilitary [1] 1980\nGovernment [17] 1990\nMilitary [20] 1990\nCommercial [55] 1990\nCivil [1] 1990\nMilitary [114] 2000\nGovernment [99] 2000\nCommercial [198] 2000\nCivil [30] 2000\nMilitary [338] 2010\nGovernment [530] 2010\nCommercial [107] 2010\nCivil [156] 2010\nMilitary  [1] 2010\nCommercial  [1] 2010\nCommercial [31] 2020\nGovernment [10] 2020\nMilitary [12] 2020\nCivil [8] 2020\n
 //            console.log("raw source");
 //		console.log(raw_source);
 
@@ -612,8 +613,8 @@ glob.process_sankey = function (info) {
         display_full_precision: 1,
         include_values_in_node_labels: 0,
         show_labels: 1,
-        canvas_width:  600,
-        canvas_height: 600,
+        canvas_width:  500,
+        canvas_height: 1000,
         font_size: 13,
         font_weight: 400,
         top_margin: 12, right_margin: 12, bottom_margin: 12, left_margin: 12,
