@@ -38,11 +38,11 @@ function firstDropdownChanged() {
             values.push("satellite");
             texts.push("satellites");
             
-            values.push("launch");
-            texts.push("launches");
+//            values.push("launch");
+//            texts.push("launches");
             
-            values.push("vehicle.vehiclename");
-            texts.push("spaceships");
+//            values.push("vehicle.vehiclename");
+//            texts.push("spaceships");
         }
         
         pluralDropdown.innerHTML = "";
@@ -137,7 +137,7 @@ function secondDropdownChanged() {
             values.push("location");
             texts.push("were launched from which site");
             
-        }else if(pluralSelected == "vehicle"){
+        }else if(pluralSelected == "vehicle.vehiclename"){
             
             values.push("decade");
             texts.push("were launched in which decade");
@@ -150,8 +150,9 @@ function secondDropdownChanged() {
             
             if(singularSelected != "type"){
                 
-                values.push("companyname");
-                texts.push("were launched by which company");
+                //Turns out a single ship isn't necessarily launched by a single company
+//                values.push("companyname");
+//                texts.push("were launched by which company");
             
             
 //            values.push("vehicle.vehiclename");

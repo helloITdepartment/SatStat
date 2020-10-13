@@ -265,6 +265,10 @@ function render_sankey(nodes_in, flows_in, config_in) {
         }
     });
 
+//    console.log(nodes_in);
+//    nodes_in.sort(function(a, b){return a.name.localeCompare(b.name)});
+//    console.log(nodes_in);
+
     var the_clean_json = {
         nodes: nodes_in,
         links: flows_in
@@ -685,7 +689,8 @@ glob.process_sankey = function (info) {
 
     // Given good_flows, make the lists of nodes and flows
     reverse_the_graph = false;
-	good_flows.sort();
+//    console.log(good_flows);
+//    good_flows.sort(function(a, b){return a.target.localeCompare(b.target)});
     good_flows.forEach( function(flow) {
         // Look for extra content about this flow on the target-node end of the
         // string:

@@ -42,7 +42,7 @@ http.createServer(function(request, response) {
                 table = "satellite s inner join orbit o on s.satapogee=o.apogee AND s.satperigee=o.perigee AND s.satinclination=o.inclination AND s.satperiod=o.period";
             }
             
-        }else if(table == "launch" || table == "vehicle"){
+        }else if(table == "launch" || table == "vehicle.vehiclename"){
             
             table = "launch inner join vehicle on launch.vehiclename=vehicle.vehiclename";
             
@@ -52,7 +52,7 @@ http.createServer(function(request, response) {
         
         let sql = `SELECT distinct ${singular} as first, ${sqlMap[q] || q} as second, Count(${sqlMap[q] || q}) as howMany FROM ${table} GROUP  BY ${singular}, ${sqlMap[q] || q} ORDER BY ${sqlMap[q] || q};`
         
-        console.log(sql);
+//        console.log(sql);
         
         db.all(sql, [], (err, rows) => {
             if (err) {
@@ -78,7 +78,12 @@ http.createServer(function(request, response) {
                     arr.forEach((f) => {
                         let sArr = second.split("/");
                         sArr.forEach( (s) => {
-                            const k = [f, s];
+                            
+//                            if(s.includes("Inc")){
+//                                console.log(row);
+//                            }
+                            
+                            const k = f + ",,," + s;
                             if(dict[k]) {
                                 dict[k] = dict[k] + howMany
                             } else {
@@ -91,11 +96,12 @@ http.createServer(function(request, response) {
             });
             for (var key in dict) {
                 value = dict[key];
-                keys = key.split(",");
+                keys = key.split(",,,");
+//                console.log(keys[0] + " [" + value + "] " + keys[1] + "\n");
                 response.write(keys[0] + " [" + value + "] " + keys[1] + "\n");
             }
             response.end();
-            console.log(counter);
+//            console.log(counter);
         });
 
         db.close();
