@@ -23,7 +23,7 @@ function firstDropdownChanged() {
             values.push("launch");
             texts.push("launches");
             
-//            values.push("vehicle");
+//            values.push("vehicle.vehiclename");
 //            texts.push("spaceships");
         }else if(singularSelected == "ownercountry"){
             values.push("satellite");
@@ -32,7 +32,7 @@ function firstDropdownChanged() {
             values.push("launch");
             texts.push("launches");
             
-            values.push("vehicle");
+            values.push("vehicle.vehiclename");
             texts.push("spaceships");
         }else if(singularSelected == "companyname"){
             values.push("satellite");
@@ -41,7 +41,7 @@ function firstDropdownChanged() {
             values.push("launch");
             texts.push("launches");
             
-            values.push("vehicle");
+            values.push("vehicle.vehiclename");
             texts.push("spaceships");
         }
         
@@ -87,7 +87,7 @@ function secondDropdownChanged() {
 //            values.push("decade");
 //            texts.push("were launched in which decade");
 
-            values.push("class");
+            values.push("orbitclass");
             texts.push("are in which orbital class");
             
             values.push("type");
@@ -96,7 +96,7 @@ function secondDropdownChanged() {
             values.push("companyname");
             texts.push("were launched by which company");
             
-//            values.push("ship");
+//            values.push("vehicle.vehiclename");
 //            texts.push("were launched on which ship");
             
 //            values.push("weightClass");
@@ -105,7 +105,7 @@ function secondDropdownChanged() {
 //            values.push("numLaunches");
 //            texts.push("were launched how many times");
             
-//            values.push("whichSite");
+//            values.push("location");
 //            texts.push("were launched from which site");
             
         }else if(pluralSelected == "launch"){
@@ -113,17 +113,18 @@ function secondDropdownChanged() {
             values.push("decade");
             texts.push("were launched in which decade");
             
-//            values.push("class");
+//            values.push("orbitclass");
 //            texts.push("are in which orbital class");
             
             values.push("type");
             texts.push("belong to which use case");
             
-            values.push("companyname");
-            texts.push("were launched by which company");
+            //Turns out a ship isn't necessarily launched by one company
+//            values.push("companyname");
+//            texts.push("were launched by which company");
             
             if(singularSelected != "companyname") {
-                values.push("ship");
+                values.push("vehicle.vehiclename");
                 texts.push("were launched on which ship");
             }
             
@@ -133,7 +134,7 @@ function secondDropdownChanged() {
 //            values.push("numLaunches");
 //            texts.push("were launched how many times");
             
-            values.push("whichSite");
+            values.push("location");
             texts.push("were launched from which site");
             
         }else if(pluralSelected == "vehicle"){
@@ -141,7 +142,7 @@ function secondDropdownChanged() {
             values.push("decade");
             texts.push("were launched in which decade");
             
-//            values.push("class");
+//            values.push("orbitclass");
 //            texts.push("are in which orbital class");
             
 //            values.push("type");
@@ -153,7 +154,7 @@ function secondDropdownChanged() {
                 texts.push("were launched by which company");
             
             
-//            values.push("ship");
+//            values.push("vehicle.vehiclename");
 //            texts.push("were launched on which ship");
             
                 values.push("weightClass");
@@ -162,7 +163,7 @@ function secondDropdownChanged() {
                 values.push("numLaunches");
                 texts.push("were launched how many times");
             
-                values.push("whichSite");
+                values.push("location");
                 texts.push("were launched from which site");
             }
         

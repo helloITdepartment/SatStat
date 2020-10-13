@@ -9,7 +9,7 @@ const sqlite3 = require('sqlite3').verbose();
 http.createServer(function(request, response) {
     
     var u = request.url;
-    let sqlMap = {"decade" : "(strftime('%Y', launchdate)/10)*10" };
+    let sqlMap = {"decade" : "(strftime('%Y', launchdate)/10)*10", "weightClass" : "round(maxpayload/1000)*1000" };
     
     if(u.startsWith("/data")) {//Requesting database data
         
@@ -38,7 +38,7 @@ http.createServer(function(request, response) {
                 q = "purpose";
             }
             
-            if(q == "class"){
+            if(q == "orbitclass"){
                 table = "satellite s inner join orbit o on s.satapogee=o.apogee AND s.satperigee=o.perigee AND s.satinclination=o.inclination AND s.satperiod=o.period";
             }
             
@@ -48,9 +48,11 @@ http.createServer(function(request, response) {
             
         }
         
-        let sql = `SELECT ${singular} as first, ${sqlMap[q] || q} as second, Count(${sqlMap[q] || q}) as howMany FROM ${table} GROUP  BY ${singular}, ${sqlMap[q] || q} ORDER  BY ${singular};`
         
-//        console.log(sql);
+        
+        let sql = `SELECT distinct ${singular} as first, ${sqlMap[q] || q} as second, Count(${sqlMap[q] || q}) as howMany FROM ${table} GROUP  BY ${singular}, ${sqlMap[q] || q} ORDER BY ${sqlMap[q] || q};`
+        
+        console.log(sql);
         
         db.all(sql, [], (err, rows) => {
             if (err) {
@@ -63,12 +65,15 @@ http.createServer(function(request, response) {
 
             var dict = {};
 
+            var counter = 0;
             rows.forEach((row) => {
+//                console.log(row);
+                counter++;
                 let first = String(row["first"]);
                 let howMany = row["howMany"];
                 let second = String(row["second"]);
 
-                if(howMany > minim) {
+                if(howMany >= minim) {
                     let arr = first.split("/");
                     arr.forEach((f) => {
                         let sArr = second.split("/");
@@ -90,6 +95,7 @@ http.createServer(function(request, response) {
                 response.write(keys[0] + " [" + value + "] " + keys[1] + "\n");
             }
             response.end();
+            console.log(counter);
         });
 
         db.close();
