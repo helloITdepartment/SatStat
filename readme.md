@@ -7,7 +7,7 @@ Hi! This is SatStat, you premier source for visualizing some cool stats about sa
 
 First some requirements. You'll need to have installed:
 + Node
-	+ Can be downloaded from NodeJS.org
+	+ Can be downloaded from [NodeJS.org](NodeJS.org)
 + The Node SQLite3 package
 	+ Can be installed with `npm install sqlite3`
 	
@@ -25,7 +25,7 @@ Fill int he drop downs to complete a mad libs style request for some cool data v
 There are simply too many countries. So you can use the "with a minumum of" number box to specify the minimum number of (in this case) satellites that need to be in a flow for it to be displayed
 
 ### Special thanks
-Big thanks to SankeyMATIC.com, and their open source [Sankey diagram generation library](https://github.com/nowthis/sankeymatic). The main.css and build.css are used from there, very lightly edited if at all, as is SankeyMATIC.js, which was pretty extensively hammered into place so we could work with it. All the rest of the code was written by us.
+Big thanks to [SankeyMATIC.com](SankeyMATIC.com), and their open source [Sankey diagram generation library](https://github.com/nowthis/sankeymatic). The main.css and build.css are used from there, very lightly edited if at all, as is SankeyMATIC.js, which was pretty extensively hammered into place so we could work with it. All the rest of the code was written by us.
 Edit: the rgb.js and sankey.js were also from them. I believe they're untouched, but I didn't have a clue what they did and was scared to delete them.
 
 
