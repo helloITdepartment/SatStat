@@ -50,9 +50,9 @@ http.createServer(function(request, response) {
         
         
         
-        let sql = `SELECT distinct ${singular} as first, ${sqlMap[q] || q} as second, Count(${sqlMap[q] || q}) as howMany FROM ${table} GROUP  BY ${singular}, ${sqlMap[q] || q} ORDER BY ${sqlMap[q] || q};`
+        let sql = `SELECT distinct ${singular} as first, ${sqlMap[q] || q} as second, Count(${sqlMap[q] || q}) as howMany FROM ${table} GROUP BY ${singular}, ${sqlMap[q] || q} ORDER BY ${sqlMap[q] || q};`
         
-//        console.log(sql);
+        console.log(sql);
         
         db.all(sql, [], (err, rows) => {
             if (err) {
